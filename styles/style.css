@@ -1,11 +1,7 @@
 .page {
   min-width: 1100px;
-  /* мы ещё не умеем делать мобильную версию сайта, */
-  /* поэтому выше установлена минимальная ширина страницы */
   max-width: 1600px;
-  /* выше установили ограничение по максимальной ширине */
   margin: 0 auto;
-  /* выше для экранов больше 1600px отцентрировали весь контент */
   font-family: "Helvetica Neue", "Arial", sans-serif;
 }
 
@@ -13,16 +9,17 @@
   height: 100vh;
   min-height: 600px;
   max-height: 756px;
-  /* выше установили ограничения для секции */
   display: flex;
   flex-direction: column;
   justify-content: center;
   background-color: #f2f2f2;
   position: relative;
+  z-index: 1;
 }
 
 .header__link {
   text-decoration: none;
+  color: #2f80ed
 }
 
 .header__main-illustration {
@@ -31,10 +28,10 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  z-index: 1;
+  z-index: -1;
 }
 
-/* ниже мы привели пример двух селекторов, чтобы вы вспомнили запись элемента */
+
 .header__square-pic {
   background-color: #2f80ed;
   height: 568px;
@@ -42,30 +39,30 @@
   position: absolute;
   top: 64px;
   right: 0;
+  z-index: -2;
 }
 
 .header__subtitle {
+  margin: 0;
   width: 388px;
   position: absolute;
   left: 64px;
   bottom: 30px;
-  z-index: 3;
   line-height: 25px;
   font-size: 18px;
   font-weight: normal;
 }
 
 .header__title {
+  margin: 0;
   width: 730px;
   line-height: 96px;
   font-size: 102px;
   font-weight: bold;
-  z-index: 3;
   margin-left: 64px;
 }
 
 .logo {
-  z-index: 2;
   width: 183px;
 }
 
@@ -93,13 +90,13 @@
 }
 
 .two-columns {
-  min-height: 333px;
   width: 80%;
-  min-width: 784px;
   display: flex;
+  justify-content: space-between;
 }
 
 .two-columns__brief {
+  width: 175px;
   line-height: 1.2;
   font-size: 18px;
   font-weight: normal;
@@ -112,12 +109,18 @@
   flex-direction: column;
   justify-content: space-between;
   width: 80%;
+  min-width: 784px;
 }
 
 .two-columns__paragraph {
   line-height: 34px;
   font-size: 24px;
   font-weight: normal;
+  margin: 0;
+  margin-bottom: 30px;
+}
+
+.two-columns__paragraph:last-child {
   margin: 0;
 }
 
@@ -164,6 +167,11 @@
 .table {
   width: 1100px;
   margin: 0 auto;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  list-style: none;
 }
 
 .table_theme_dark {
@@ -175,7 +183,6 @@
   margin-top: 60px;
 }
 
-/* и элемента с модификатором вида ключ-значение */
 .table__cell_theme_dark {
   width: 200px;
   margin-right: 0;
@@ -187,7 +194,6 @@
   font-size: 24px;
   font-weight: bold;
   margin: 0;
-  margin-bottom: 20px;
   text-align: start;
 }
 
@@ -203,6 +209,7 @@
 
 .table__text {
   margin: 0;
+  margin-top: 20px;
   line-height: 1.2;
   font-size: 18px;
   font-weight: normal;
@@ -214,7 +221,7 @@
 
 .feynman {
   position: relative;
-  height: 790px;
+  min-height: 790px;
   padding-top: 100px;
   background-color: #f2f2f2;
   background-size: 867px 637px;
@@ -248,6 +255,7 @@
   position: absolute;
   top: 50%;
   right: 48px;
+  color: #2f80ed;
 }
 
 .kaufman {
@@ -258,10 +266,13 @@
   background-color: #1f1f1f;
   position: relative;
   overflow: hidden;
-  z-index: 0;
+  z-index: 1;
 }
 
 .kaufman__triangle {
+  background-image: url(../images/kaufman-triangle.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
   width: 877px;
   height: 877px;
   position: absolute;
@@ -274,7 +285,6 @@
   background-color: #1f1f1f;
   min-height: 350px;
   display: flex;
-  color: #f2f2f2;
 }
 
 .footer__columns {
@@ -282,6 +292,10 @@
   width: 90%;
   display: flex;
   justify-content: space-between;
+}
+
+.footer__column {
+  color: #f2f2f2
 }
 
 .footer__column_content_copyright {
@@ -293,16 +307,16 @@
 
 .footer__column_content_info {
   display: flex;
-  list-style: none;
+  flex-direction: column;
 }
 
 .footer__column_content_social {
   display: flex;
-  list-style: none;
+  flex-direction: column;
 }
 
 .footer__column-heading {
-  color: #f2f2f2;
+  margin: 0;
   line-height: 30px;
   font-size: 18px;
   font-weight: bold;
@@ -311,6 +325,7 @@
 .footer__column-links {
   list-style: none;
   padding: 0;
+  margin: 20px 0 16px 0;
 }
 
 .footer__column-link {
@@ -319,7 +334,6 @@
   line-height: 30px;
   font-size: 18px;
   font-weight: normal;
-  margin: 20px 0 16px 0;
 }
 
 .footer__author {
@@ -334,3 +348,7 @@
   width: 16px;
   margin-right: 10px;
 }
+
+
+/* К сожалению не смог придумать, эстетически приятные и невыбивающиеся из общего макета,
+  эффекты для активных элементов. Поэтому решил hover на них не использовать ~_~*/
